@@ -1,4 +1,4 @@
-package com.imooc.goods;
+package com.imooc.jdbc.goods;
 
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.BeanListHandler;

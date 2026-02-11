@@ -1,4 +1,4 @@
-package com.imooc.goods;
+package com.imooc.jdbc.goods;
 
 import javax.sql.DataSource;
 import java.sql.Connection;

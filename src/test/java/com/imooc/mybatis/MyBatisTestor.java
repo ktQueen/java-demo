@@ -18,7 +18,7 @@ public class MyBatisTestor {
         //利用Reader加载classpath 下的mybatis.xml核心配置文件
         Reader reader = Resources.getResourceAsReader("mybatis.xml");
         //初始化SqlSessionFactory 对象，同时解析mybatis.xml文件
-        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder(reader);
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(reader);
         System.out.println("SessionFactory加载成功");
         SqlSession sqlSession = null;
         //创建SqlSession对象，SqlSession是JDBC的扩展类，用于与数据库交互

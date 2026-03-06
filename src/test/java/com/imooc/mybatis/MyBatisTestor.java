@@ -1,5 +1,6 @@
 package com.imooc.mybatis;
 
+import com.imooc.mybatis.utils.MyNatisUtils;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -37,5 +38,15 @@ public class MyBatisTestor {
             }
         }
 
+    }
+
+    @Test
+    public void testMyBatisUtils() {
+        SqlSession sqlSession = null;
+        MyNatisUtils MyBatisUtils = new MyNatisUtils();
+        sqlSession = MyBatisUtils.openSession();
+        Connection connection = sqlSession.getConnection();
+        System.out.println(connection);
+        MyBatisUtils.closeSession(sqlSession);
     }
 }

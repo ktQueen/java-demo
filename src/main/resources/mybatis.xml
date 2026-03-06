@@ -3,6 +3,11 @@
         PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
+ <properties resource="druid.properties"/>
+    <settings>
+        <!--        goods_id==>goodsId 驼峰命名转换-->
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+    </settings>
     <!--    设置默认指向的数据库-->
     <environments default="development">
         <!--        配置环境，不同的环境不同的id名字-->
@@ -16,7 +21,7 @@
                 <property name="driver" value="com.mysql.jdbc.Driver"/>
                 <!--                连接数据库的url-->
                 <property name="url"
-                          value="jdbc:mysql://localhost:3306/springdb?useUnicode=true&amp;characterEncoding=utf-8"/>
+                          value="jdbc:mysql://localhost:3306/goods?useUnicode=true&amp;characterEncoding=utf-8"/>
                 <property name="username" value="${username}"/>
                 <property name="password" value="${password}"/>
             </dataSource>
@@ -37,7 +42,7 @@
             </dataSource>
         </environment>
     </environments>
-    <mappers>
+    <!-- <mappers>
         <mapper resource="org/mybatis/example/BlogMapper.xml"/>
-    </mappers>
+    </mappers> -->
 </configuration>

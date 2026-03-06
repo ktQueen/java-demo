@@ -1,5 +1,6 @@
 package com.imooc.mybatis;
 
+import com.imooc.jdbc.goods.Goods;
 import com.imooc.mybatis.utils.MyNatisUtils;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -10,6 +11,7 @@ import org.junit.Test;
 import java.io.IOException;
 import java.io.Reader;
 import java.sql.Connection;
+import java.util.List;
 
 //JUNIT单元测试类
 
@@ -48,5 +50,34 @@ public class MyBatisTestor {
         Connection connection = sqlSession.getConnection();
         System.out.println(connection);
         MyBatisUtils.closeSession(sqlSession);
+    }
+
+    @Test
+    public void testSelectAllGoods() throws Exception {
+        // 1. 加载 mybatis 核心配置
+        Reader reader = Resources.getResourceAsReader("mybatis.xml");
+        SqlSessionFactory factory = new SqlSessionFactoryBuilder().build(reader);
+
+        // 2. 打开会话
+        try (SqlSession sqlSession = factory.openSession()) {
+            // 3. 调用 mapper 中的 selectAll（namespace.id）
+            List<Goods> list = sqlSession.selectList("goods.selectAll");
+            // 4. 打印结果
+            for (Goods g : list) {
+                System.out.println(g);
+            }
+        }
+    }
+
+    @Test
+    public void testSelectGoodsById() throws Exception {
+        Reader reader = Resources.getResourceAsReader("mybatis.xml");
+        SqlSessionFactory factory = new SqlSessionFactoryBuilder().build(reader);
+
+        try (SqlSession sqlSession = factory.openSession()) {
+            // 假设表里有 id = 1 的数据
+            Goods goods = sqlSession.selectOne("goods.selectById", 1);
+            System.out.println(goods);
+        }
     }
 }

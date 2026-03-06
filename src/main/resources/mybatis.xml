@@ -3,7 +3,7 @@
         PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
- <properties resource="druid.properties"/>
+    <properties resource="druid.properties"/>
     <settings>
         <!--        goods_id==>goodsId 驼峰命名转换-->
         <setting name="mapUnderscoreToCamelCase" value="true"/>
@@ -45,4 +45,7 @@
     <!-- <mappers>
         <mapper resource="org/mybatis/example/BlogMapper.xml"/>
     </mappers> -->
+    <mappers>
+        <mapper resource="mappers/goods.xml"/>
+    </mappers>
 </configuration>
